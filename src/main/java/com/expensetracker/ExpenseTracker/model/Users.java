@@ -7,8 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class Users {
@@ -58,20 +65,23 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
-    @Column(name = "first_name")
+
+
+
+    @Column(name = "first_name",nullable = false, length = 10, unique = true)
+    @NotBlank(message = "Product name cannot be blank")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
+//    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
+//            flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(name = "email_id")
     private String emailId;
 
     @Column(name = "password")
     private String password;
-
-
-
 
 
 }
