@@ -1,11 +1,13 @@
 package com.expensetracker.ExpenseTracker.model;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -56,7 +58,6 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
-
     @Column(name = "first_name")
     private String firstName;
 
