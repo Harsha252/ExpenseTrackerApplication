@@ -4,24 +4,38 @@ import java.util.List;
 
 import com.expensetracker.ExpenseTracker.model.Users;
 import com.expensetracker.ExpenseTracker.service.UsersServices;
+import jakarta.validation.Valid;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/")
 public class UsersController {
+
     @Autowired
     private UsersServices usersServices;
+    @PostMapping("postingusers")
+    public ResponseEntity<Users> createUsers(@Valid @RequestBody Users users){
+       Users savedusers =  usersServices.createUser(users);
+       return  new ResponseEntity<Users>(savedusers, HttpStatus.CREATED);
 
-    @GetMapping("getusers")
-    public List<Users> getusers() {
-        return usersServices.getusers();
     }
 
-    @PostMapping("postusers")
-    public void Users(@RequestBody Users users) {
-        usersServices.saveUsers(users);
-    }
+
+
+//    @Autowired
+//    private UsersServices usersServices;
+//
+//    @GetMapping("getusers")
+//    public List<Users> getusers() {
+//        return usersServices.getusers();
+//    }
+//
+//    @PostMapping("postusers")
+//    public void Users(@Valid @RequestBody Users users) {
+//        usersServices.saveUsers(users);
+//    }
 }
