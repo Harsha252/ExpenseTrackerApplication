@@ -24,18 +24,4 @@ public class UsersController {
 
     }
 
-
-
-//    @Autowired
-//    private UsersServices usersServices;
-//
-//    @GetMapping("getusers")
-//    public List<Users> getusers() {
-//        return usersServices.getusers();
-//    }
-//
-//    @PostMapping("postusers")
-//    public void Users(@Valid @RequestBody Users users) {
-//        usersServices.saveUsers(users);
-//    }
 }
