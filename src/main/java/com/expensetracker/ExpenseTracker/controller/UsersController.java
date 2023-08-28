@@ -24,4 +24,10 @@ public class UsersController {
 
     }
 
+    @GetMapping("/home")
+    public String home(){
+        return "This is a home page";
+
+    }
+
 }
